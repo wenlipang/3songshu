@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>控制台</title>
+		<title><%= title%></title>
 		<meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
 		<meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,7 +74,7 @@
 								<i class="icon-home home-icon"></i>
 								<a href="#">首页</a>
 							</li>
-							<li class="active">控制台</li>
+							<li class="active">用户管理<li>
 						</ul><!-- .breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -89,15 +90,51 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								控制台
+								用户管理
 								<small>
 									<i class="icon-double-angle-right"></i>
-									 查看
+									 <%= title%>
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
 						<!--主要内容-->
-						<div class="row"></div>
+						<div class="row">
+							<table class="table table-bordered table-hover text-center">
+								<thead>
+									<tr class="success">
+										<th class="text-center">id</th>
+										<th class="text-center">name</th>
+										<th class="text-center">desc</th>
+										<th class="text-center">discount</th>
+										<th class="text-center">price</th>
+										<th class="text-center">coin</th>
+										<th class="text-center">remain</th>
+										<th class="text-center">img_sm</th>
+										<th class="text-center">img_lg</th>
+										<th class="text-center">操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% for(var item in goodsInfo){%>
+									<tr>
+										<td><%= goodsInfo[item].id %> </td>
+										<td><%= goodsInfo[item].name %></td>
+										<td><%= goodsInfo[item].desc%></td>
+										<td><%= goodsInfo[item].discount %></td>
+										<td><%= goodsInfo[item].price%></td>
+										<td><%= goodsInfo[item].coin%></td>
+										<td><%= goodsInfo[item].remain%></td>
+										<td class="cut"><%= goodsInfo[item].img_sm%></td>
+										<td class="cut2"><%= goodsInfo[item].img_lg%></td>
+										<td>
+											<button class="btn btn-success btn-xs" onclick="location.href='/goods/edit?id=<%= goodsInfo[item].id%>'" type="button">编辑</button>
+											<button class="btn btn-danger btn-xs delete" type="button">删除</button>
+										</td>
+									</tr>
+								<% } %>
+								</tbody>
+							</table>
+						</div>
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
 		
@@ -114,6 +151,12 @@
 		<!--[if !IE]> -->
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$('.cut').html($('.cut').html().substr(0,20)+"...");
+			$('.cut2').html($('.cut2').html().substr(0,20)+"...");
+			})
+		</script>
 
 		<!-- <![endif]-->
 

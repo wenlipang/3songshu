@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>控制台</title>
+		<title><%= title%></title>
 		<meta name="keywords" content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
 		<meta name="description" content="站长素材提供Bootstrap模版,Bootstrap教程,Bootstrap中文翻译等相关Bootstrap插件下载" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,7 +73,7 @@
 								<i class="icon-home home-icon"></i>
 								<a href="#">首页</a>
 							</li>
-							<li class="active">控制台</li>
+							<li class="active">用户管理<li>
 						</ul><!-- .breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -89,20 +89,43 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								控制台
+								用户管理
 								<small>
 									<i class="icon-double-angle-right"></i>
-									 查看
+									 <%= title%>
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
 						<!--主要内容-->
-						<div class="row"></div>
+						<div class="row">
+							<table class="table table-bordered table-hover text-center">
+								<thead>
+									<tr class="success">
+										<th class="text-center">id</th>
+										<th class="text-center">用户昵称</th>
+										<th class="text-center">手机号</th>
+										<th class="text-center">密码</th>
+										<th class="text-center">头像</th>
+									</tr>
+
+								</thead>
+								<tbody>
+									<% for(var item in userList){%>
+								<tr>
+									<td><%= userList[item].id%></td>
+									<td><%= userList[item].nickname%></td>
+									<td><%= userList[item].mobile%></td>
+									<td><%= userList[item].password%></td>
+									<td class="img"><%= userList[item].img%></td>
+								</tr>
+								<% }%>
+								</tbody>
+							</table>
+						</div>
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
 		
 			</div><!-- /.main-container-inner -->
-
 
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="icon-double-angle-up icon-only bigger-110"></i>
@@ -114,8 +137,12 @@
 		<!--[if !IE]> -->
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-		<!-- <![endif]-->
+		<!-- <script>
+			$(function(){
+				$('.img').html($('.img').html().substr(0,30)+'...')
+			})
+		</script>
+ -->		<!-- <![endif]-->
 
 		<!--[if IE]>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
